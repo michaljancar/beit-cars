@@ -11,8 +11,15 @@
   box-shadow: none !important;
   border-color: #eaeaea;
 }
+.p-inputtext.ng-touched.ng-invalid,
+p-inputnumber.ng-touched.ng-invalid .p-inputtext,
+p-calendar.ng-touched.ng-invalid .p-inputtext,
+p-dropdown.ng-touched.ng-invalid .p-dropdown {
+  border-color: #e24c4c;
+}
 
-.p-dropdown-open {
+.p-dropdown-open,
+.p-inputtext:focus {
   border-color: #575bec;
 }
 
