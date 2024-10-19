@@ -1,7 +1,7 @@
 <p-table
   [columns]="columns"
   [value]="carService.storedCars$ | async"
-  [paginator]="true"
+  [paginator]="(carService.storedCars$ | async)?.length > 8"
   [rows]="8"
   [tableStyle]="{ width: '1200px', maxWidth: '90%', marginInline: 'auto' }"
 >
