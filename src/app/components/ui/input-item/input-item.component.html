@@ -1,0 +1,9 @@
+<div class="bc-input-item">
+  <label [for]="inputId" class="bc-input-item__label">{{ label }}</label>
+  <ng-content />
+  @if(hasError) {
+  <small [id]="inputId + '-error'" class="bc-input-item__error"
+    >Pole je povinné</small
+  >
+  }
+</div>

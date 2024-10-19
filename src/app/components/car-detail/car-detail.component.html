@@ -1,0 +1,90 @@
+<p-fieldset [legend]="editMode ? 'Upravit záznam' : 'Informace o vozidle'">
+  <form [formGroup]="carForm" (ngSubmit)="onSubmit()">
+    @if(selectedCar?.id) {
+    <app-input-item label="ID" inputId="car-id">
+      <input type="number" id="car-id" pInputText formControlName="id" />
+    </app-input-item>
+    }
+    <app-input-item
+      label="SPZ"
+      inputId="car-spz"
+      [hasError]="getFieldHasError('licencePlate')"
+    >
+      <input
+        type="text"
+        id="car-spz"
+        pInputText
+        formControlName="licencePlate"
+      />
+    </app-input-item>
+    <app-input-item
+      label="Značka"
+      inputId="car-brand"
+      [hasError]="getFieldHasError('brand')"
+    >
+      <p-dropdown
+        id="car-brand"
+        [options]="brands"
+        formControlName="brand"
+        placeholder="Zvolte značku"
+        [checkmark]="true"
+      />
+    </app-input-item>
+    <app-input-item
+      label="Cena"
+      inputId="car-price"
+      [hasError]="getFieldHasError('price')"
+    >
+      <p-inputNumber
+        formControlName="price"
+        inputId="car-price"
+        mode="currency"
+        currency="CZK"
+        locale="cs-CZ"
+      />
+    </app-input-item>
+    <app-input-item
+      label="Datum vydání"
+      inputId="car-date"
+      [hasError]="getFieldHasError('createdDate')"
+    >
+      <p-calendar
+        formControlName="createdDate"
+        [iconDisplay]="'input'"
+        [showIcon]="true"
+        [maxDate]="today"
+        dateFormat="dd.mm.yy"
+        inputId="icondisplay"
+      />
+    </app-input-item>
+    <div class="bc-form-actions">
+      @if(editMode){
+      <p-button
+        type="submit"
+        label="Uložit"
+        icon="pi pi-save"
+        [loading]="isLoading"
+        [disabled]="carForm.invalid"
+      />
+      } @else {
+      <p-button
+        type="button"
+        label="Upravit"
+        icon="pi pi-pencil"
+        [loading]="isLoading"
+        (onClick)="onStartEdit()"
+      />
+
+      }
+      <p-button
+        label="Zavřít"
+        type="button"
+        severity="secondary"
+        icon="pi pi-times"
+        [outlined]="true"
+        [disabled]="isLoading"
+        (onClick)="onClose()"
+      />
+    </div>
+  </form>
+</p-fieldset>

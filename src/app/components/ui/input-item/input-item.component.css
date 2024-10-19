@@ -1,0 +1,17 @@
+.bc-input-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  margin: 1rem 0;
+  width: 100%;
+  padding: 0.25rem 0;
+}
+
+.bc-input-item__label {
+  font-size: 0.75rem;
+  padding-left: 0.75rem;
+}
+
+.bc-input-item__error {
+  color: #e24c4c;
+}

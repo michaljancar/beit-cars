@@ -1,0 +1,39 @@
+<p-table
+  [columns]="columns"
+  [value]="carService.storedCars$ | async"
+  [paginator]="true"
+  [rows]="8"
+  [tableStyle]="{ width: '1200px', maxWidth: '90%', marginInline: 'auto' }"
+>
+  <ng-template pTemplate="header" let-columns>
+    <tr>
+      @for(col of columns; track col) {
+      <th>
+        {{ col.header }}
+      </th>
+      }
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-car let-columns="columns">
+    <tr>
+      @for(col of columns; track col) {
+      <td>
+        @if(col.field === 'action') {
+        <p-button
+          label="Přejít na detail"
+          icon="pi pi-search"
+          [style]="{ width: '100%' }"
+          (click)="onShowDetail(car.id)"
+        />
+        } @else if (col.field === 'price') {
+        {{ car.price | currency : "CZK" }}
+        } @else if (col.field === 'createdDate') {
+        {{ car.createdDate | date : "dd.MM.yyyy" }}
+        } @else {
+        {{ car[col.field] }}
+        }
+      </td>
+      }
+    </tr>
+  </ng-template>
+</p-table>

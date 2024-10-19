@@ -1,1 +1,62 @@
-/* You can add global styles to this file, and also import other style files */
+@import "primeng/resources/themes/lara-light-blue/theme.css";
+@import "primeng/resources/primeng.css";
+@import "primeicons/primeicons.css";
+
+.p-inputtext,
+.p-inputnumber,
+.p-calendar,
+.p-dropdown {
+  width: 100%;
+  border-radius: 8rem;
+  box-shadow: none !important;
+  border-color: #eaeaea;
+}
+
+.p-dropdown-open {
+  border-color: #575bec;
+}
+
+.p-dropdown-panel {
+  margin-top: 0.25rem;
+  border: 1px solid #eff1f4;
+  border-radius: 0.5rem;
+  box-shadow: none;
+}
+
+.p-dropdown-item {
+  padding-right: 2.5rem;
+}
+
+.p-dropdown-item.p-highlight,
+.p-dropdown-item:hover {
+  background: #f9fafb;
+}
+
+.p-dropdown-item.p-highlight {
+  color: #4b5563;
+}
+
+.p-dropdown-panel checkicon,
+.p-dropdown-panel blankicon {
+  position: absolute;
+  right: 1rem;
+  color: #575bec;
+}
+
+.p-fieldset {
+  height: 100%;
+  position: relative;
+}
+
+.bc-form-actions {
+  display: flex;
+  gap: 0.5rem;
+  position: absolute;
+  bottom: 1rem;
+  right: 1rem;
+}
+
+.bc-page-title {
+  font-size: 1.5rem;
+  margin: 0;
+}
