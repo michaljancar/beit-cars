@@ -3,7 +3,11 @@
   [value]="carService.storedCars$ | async"
   [paginator]="(carService.storedCars$ | async)?.length > 8"
   [rows]="8"
-  [tableStyle]="{ width: '1200px', maxWidth: '90%', marginInline: 'auto' }"
+  [tableStyle]="{
+    width: '1200px',
+    maxWidth: 'calc(100vw - 1rem)',
+    marginInline: 'auto'
+  }"
 >
   <ng-template pTemplate="header" let-columns>
     <tr>
