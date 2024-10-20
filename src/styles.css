@@ -55,6 +55,19 @@ p-dropdown.ng-touched.ng-invalid .p-dropdown {
   position: relative;
 }
 
+.p-toolbar {
+  width: 1200px;
+  max-width: calc(100vw - 1rem);
+  margin-inline: auto;
+  margin-bottom: 0.5rem;
+}
+
+.p-datatable {
+  width: 1200px;
+  max-width: calc(100vw - 1rem);
+  margin-inline: auto;
+}
+
 .bc-form-actions {
   display: flex;
   gap: 0.5rem;
