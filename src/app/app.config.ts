@@ -6,11 +6,13 @@ import localeCs from '@angular/common/locales/cs';
 registerLocaleData(localeCs, 'cs');
 
 import { routes } from './app.routes';
+import { MessageService } from 'primeng/api';
 
 export const appConfig: ApplicationConfig = {
   providers: [
     provideRouter(routes),
     { provide: LOCALE_ID, useValue: 'cs-CZ' },
     provideAnimationsAsync(),
+    MessageService,
   ],
 };
