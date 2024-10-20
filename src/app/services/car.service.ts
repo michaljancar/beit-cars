@@ -3,6 +3,7 @@ import { inject, Injectable } from '@angular/core';
 import { Car, CarBrand } from '../models/car.model';
 import { UIService } from './ui.service';
 import { BehaviorSubject } from 'rxjs';
+import { MessageService } from 'primeng/api';
 
 const CARS: Car[] = [
   {
@@ -66,6 +67,7 @@ const CARS: Car[] = [
 @Injectable({ providedIn: 'root' })
 export class CarService {
   private readonly uiService = inject(UIService);
+  private readonly messageService = inject(MessageService);
 
   storedCars$ = new BehaviorSubject<Car[]>(CARS);
   selectedCar$ = new BehaviorSubject<Car>(null);
@@ -99,6 +101,14 @@ export class CarService {
   private finishEditing() {
     this.uiService.hideSidebar();
     this.dismissSelectedCar();
+    this.messageService.add({
+      severity: 'success',
+      summary: 'Hotovo',
+      detail: 'Data uložena',
+      life: 1500,
+      key: 'data',
+      closable: false,
+    });
   }
 
   private getNewCarId() {
