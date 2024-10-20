@@ -83,9 +83,8 @@
         icon="pi pi-times"
         [outlined]="true"
         [disabled]="isLoading"
-        (onClick)="carForm.dirty ? onConfirm($event) : onClose()"
+        (onClick)="carForm.dirty ? onConfirm() : onClose()"
       />
     </div>
   </form>
 </p-fieldset>
-<p-confirmDialog [closable]="false" />

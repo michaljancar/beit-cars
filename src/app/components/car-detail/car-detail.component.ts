@@ -9,12 +9,10 @@ import { map } from 'rxjs';
 
 import { ButtonModule } from 'primeng/button';
 import { CalendarModule } from 'primeng/calendar';
-import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { DropdownModule } from 'primeng/dropdown';
 import { FieldsetModule } from 'primeng/fieldset';
 import { InputNumberModule } from 'primeng/inputnumber';
 import { InputTextModule } from 'primeng/inputtext';
-import { ConfirmationService } from 'primeng/api';
 
 import { Car } from '../../models/car.model';
 import { InputItemComponent } from '../ui/input-item/input-item.component';
@@ -28,7 +26,6 @@ import { UIService } from '../../services/ui.service';
     ReactiveFormsModule,
     ButtonModule,
     CalendarModule,
-    ConfirmDialogModule,
     DropdownModule,
     FieldsetModule,
     InputTextModule,
@@ -36,13 +33,11 @@ import { UIService } from '../../services/ui.service';
     InputItemComponent,
   ],
   templateUrl: './car-detail.component.html',
-  providers: [ConfirmationService],
 })
 export class CarDetailComponent implements OnInit {
   private readonly destroyRef = inject(DestroyRef);
   private readonly carService = inject(CarService);
   private readonly uiService = inject(UIService);
-  private readonly confirmationService = inject(ConfirmationService);
   private readonly fb = inject(FormBuilder);
 
   carForm: FormGroup;
@@ -100,20 +95,12 @@ export class CarDetailComponent implements OnInit {
     this.carService.dismissSelectedCar();
   }
 
-  onConfirm(event: Event) {
-    this.confirmationService.confirm({
-      target: event.target as EventTarget,
+  onConfirm() {
+    this.uiService.showConfirmation({
       header: 'Opravdu chcete odejít?',
       message: 'Všechny změny, které jste provedli, nebudou uloženy.',
-      acceptLabel: 'Ano',
-      rejectLabel: 'Ne',
-      acceptButtonStyleClass: 'p-button-text',
-      rejectButtonStyleClass: 'p-button-text p-button-secondary',
       accept: () => {
         this.onClose();
-      },
-      reject: () => {
-        return;
       },
     });
   }
