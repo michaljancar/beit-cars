@@ -17,6 +17,8 @@ export class AppComponent implements OnInit {
 
   ngOnInit(): void {
     this.config.setTranslation({
+      accept: 'Ano',
+      dayNamesMin: ['Po', 'Ut', 'St', 'Čt', 'Pi', 'So', 'Ne'],
       monthNames: [
         'Leden',
         'Únor',
@@ -31,7 +33,7 @@ export class AppComponent implements OnInit {
         'Listopad',
         'Prosinec',
       ],
-      dayNamesMin: ['Po', 'Ut', 'St', 'Čt', 'Pi', 'So', 'Ne'],
+      reject: 'Ne',
     });
   }
 }

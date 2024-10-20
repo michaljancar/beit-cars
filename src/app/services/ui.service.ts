@@ -34,8 +34,6 @@ export class UIService {
   showConfirmation(confirmation: Confirmation) {
     this.confirmationService.confirm({
       ...confirmation,
-      acceptLabel: confirmation.acceptLabel ?? 'Ano',
-      rejectLabel: confirmation.rejectLabel ?? 'Ne',
       acceptButtonStyleClass:
         confirmation.acceptButtonStyleClass ?? 'p-button-text',
       rejectButtonStyleClass:
