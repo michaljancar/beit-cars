@@ -31,6 +31,7 @@ export class AppComponent implements OnInit {
         'Listopad',
         'Prosinec',
       ],
+      dayNamesMin: ['Po', 'Ut', 'St', 'Čt', 'Pi', 'So', 'Ne'],
     });
   }
 }
