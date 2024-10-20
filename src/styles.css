@@ -20,7 +20,7 @@ p-dropdown.ng-touched.ng-invalid .p-dropdown {
 
 .p-dropdown-open,
 .p-inputtext:focus {
-  border-color: #575bec;
+  border-color: #575bec !important;
 }
 
 .p-dropdown-panel {
