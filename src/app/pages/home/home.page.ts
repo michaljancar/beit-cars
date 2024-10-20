@@ -28,10 +28,6 @@ export class HomePage {
 
   readonly sidebarIsOpen = toSignal(this.uiService.sidebarIsOpen$);
 
-  onAddNewCar() {
-    this.uiService.showSidebar();
-  }
-
   onHideSidebar() {
     this.uiService.hideSidebar();
     this.carService.dismissSelectedCar();

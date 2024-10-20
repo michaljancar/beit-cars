@@ -1,4 +1,4 @@
-<p-fieldset [legend]="editMode ? 'Upravit záznam' : 'Informace o vozidle'">
+<p-fieldset legend="Upravit záznam">
   <form [formGroup]="carForm" (ngSubmit)="onSubmit()">
     @if(selectedCar?.id) {
     <app-input-item label="ID" inputId="car-id">
@@ -58,32 +58,19 @@
       />
     </app-input-item>
     <div class="bc-form-actions">
-      @if(editMode){
       <p-button
         type="submit"
         label="Uložit"
         icon="pi pi-save"
-        [loading]="isLoading"
         [disabled]="carForm.invalid"
       />
-      } @else {
-      <p-button
-        type="button"
-        label="Upravit"
-        icon="pi pi-pencil"
-        [loading]="isLoading"
-        (onClick)="onStartEdit()"
-      />
-
-      }
       <p-button
         label="Zavřít"
         type="button"
         severity="secondary"
         icon="pi pi-times"
         [outlined]="true"
-        [disabled]="isLoading"
-        (onClick)="carForm.dirty ? onConfirm() : onClose()"
+        (onClick)="onClose()"
       />
     </div>
   </form>

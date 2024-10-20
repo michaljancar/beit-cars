@@ -77,37 +77,16 @@ export class CarService {
     this.uiService.showSidebar();
   }
 
-  addNewCar(newCarData: Car) {
-    const newCar: Car = { ...newCarData, id: this.getNewCarId() };
-    const updatedCars = [...this.storedCars$.value, newCar];
-    this.storedCars$.next(updatedCars);
-    this.finishEditing();
-  }
-
   updateCar(updatedCar: Car) {
     const updatedCars = this.storedCars$.value.map((car) =>
       car.id === updatedCar.id ? updatedCar : car
     );
     this.storedCars$.next(updatedCars);
-    this.finishEditing();
+    this.uiService.hideSidebar();
+    this.dismissSelectedCar();
   }
 
   dismissSelectedCar() {
     this.selectedCar$.next(null);
-  }
-
-  private finishEditing() {
-    this.uiService.hideSidebar();
-    this.dismissSelectedCar();
-    this.uiService.showToast({
-      severity: 'success',
-      summary: 'Hotovo',
-      detail: 'Data uložena',
-    });
-  }
-
-  private getNewCarId() {
-    const latestId = Math.max(...this.storedCars$.value.map((car) => car.id));
-    return latestId + 1;
   }
 }

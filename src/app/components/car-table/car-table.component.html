@@ -1,16 +1,9 @@
-<p-table
-  [columns]="columns"
-  [value]="carService.storedCars$ | async"
-  [paginator]="(carService.storedCars$ | async)?.length > 8"
-  [rows]="8"
->
+<p-table [columns]="columns" [value]="carService.storedCars$ | async">
   <ng-template pTemplate="header" let-columns>
     <tr>
       @for(col of columns; track col) {
-      <th [pSortableColumn]="col.field === 'action' ? null : col.field">
-        {{ col.header }} @if(col.field !== 'action'){<p-sortIcon
-          [field]="col.field"
-        />}
+      <th>
+        {{ col.header }}
       </th>
       }
     </tr>
