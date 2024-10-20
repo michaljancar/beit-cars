@@ -64,7 +64,7 @@
         label="Uložit"
         icon="pi pi-save"
         [loading]="isLoading"
-        [disabled]="carForm.invalid"
+        [disabled]="carForm.invalid || isDeleting"
       />
       } @else {
       <p-button
@@ -72,17 +72,27 @@
         label="Upravit"
         icon="pi pi-pencil"
         [loading]="isLoading"
+        [disabled]="isDeleting"
         (onClick)="onStartEdit()"
       />
 
       }
+      <p-button
+        type="button"
+        label="Odstranit"
+        icon="pi pi-trash"
+        severity="danger"
+        [loading]="isDeleting"
+        [disabled]="isLoading"
+        (onClick)="onDelete()"
+      />
       <p-button
         label="Zavřít"
         type="button"
         severity="secondary"
         icon="pi pi-times"
         [outlined]="true"
-        [disabled]="isLoading"
+        [disabled]="isLoading || isDeleting"
         (onClick)="carForm.dirty ? onConfirm() : onClose()"
       />
     </div>

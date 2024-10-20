@@ -44,6 +44,7 @@ export class CarDetailComponent implements OnInit {
   selectedCar: Car = null;
   editMode = false;
   isLoading = false;
+  isDeleting = false;
   readonly brands = this.carService.carBrands;
   readonly today = new Date();
 
@@ -102,6 +103,19 @@ export class CarDetailComponent implements OnInit {
       accept: () => {
         this.onClose();
       },
+    });
+  }
+
+  onDelete() {
+    this.isDeleting = true;
+    this.uiService.showConfirmation({
+      header: 'Odstranit záznam?',
+      message: 'Všechny data budou odstraněna.',
+      accept: () => {
+        this.carService.deleteCar(this.selectedCar?.id);
+        this.isDeleting = false;
+      },
+      reject: () => (this.isDeleting = false),
     });
   }
 

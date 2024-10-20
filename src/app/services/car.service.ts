@@ -92,17 +92,23 @@ export class CarService {
     this.finishEditing();
   }
 
+  deleteCar(id: number) {
+    const updatedCars = this.storedCars$.value.filter((car) => car.id !== id);
+    this.storedCars$.next(updatedCars);
+    this.finishEditing(false);
+  }
+
   dismissSelectedCar() {
     this.selectedCar$.next(null);
   }
 
-  private finishEditing() {
+  private finishEditing(updatingData = true) {
     this.uiService.hideSidebar();
     this.dismissSelectedCar();
     this.uiService.showToast({
       severity: 'success',
       summary: 'Hotovo',
-      detail: 'Data uložena',
+      detail: updatingData ? 'Data uložena' : 'Záznam smazán',
     });
   }
 
