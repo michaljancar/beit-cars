@@ -34,14 +34,19 @@ export class UIService {
   showConfirmation(confirmation: Confirmation) {
     this.confirmationService.confirm({
       ...confirmation,
-      acceptLabel: 'Ano',
-      rejectLabel: 'Ne',
-      acceptButtonStyleClass: 'p-button-text',
-      rejectButtonStyleClass: 'p-button-text p-button-secondary',
+      acceptLabel: confirmation.acceptLabel ?? 'Ano',
+      rejectLabel: confirmation.rejectLabel ?? 'Ne',
+      acceptButtonStyleClass:
+        confirmation.acceptButtonStyleClass ?? 'p-button-text',
+      rejectButtonStyleClass:
+        confirmation.rejectButtonStyleClass ??
+        'p-button-text p-button-secondary',
       key: 'confirmation',
-      reject: () => {
-        return;
-      },
+      reject:
+        confirmation.reject ??
+        (() => {
+          return;
+        }),
     });
   }
 }
