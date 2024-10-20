@@ -12,8 +12,10 @@
   <ng-template pTemplate="header" let-columns>
     <tr>
       @for(col of columns; track col) {
-      <th>
-        {{ col.header }}
+      <th [pSortableColumn]="col.field === 'action' ? null : col.field">
+        {{ col.header }} @if(col.field !== 'action'){<p-sortIcon
+          [field]="col.field"
+        />}
       </th>
       }
     </tr>
